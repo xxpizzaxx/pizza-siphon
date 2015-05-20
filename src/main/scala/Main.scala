@@ -24,8 +24,10 @@ object Main extends App {
 
   // filter out silos
   val SILO_ID = 14343
+  val COUPLING_ARRAY_ID = 17982
+  val ids = Seq(SILO_ID, COUPLING_ARRAY_ID)
   // get towers with siphons on
-  val (siphoned, notSiphoned) = assets.filter{_.getTypeID==SILO_ID}.partition{_.getAssets.asScala.exists(_.getQuantity%100!=0)}
+  val (siphoned, notSiphoned) = assets.filter{a => ids.contains(a.getTypeID)}.partition{_.getAssets.asScala.exists(_.getQuantity%100!=0)}
   // grab their locations
   val siphonedLocations = siphoned.map{_.getLocationID}
   // look up the locations
