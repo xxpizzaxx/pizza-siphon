@@ -22,7 +22,7 @@ object Main extends App {
   val characternameparser = CharacterLookupParser.getId2NameInstance()
   val assets = assetparser.getResponse(auth).getAll.asScala
 
-  // filter out silos
+  // we want silos and coupling arrays
   val SILO_ID = 14343
   val COUPLING_ARRAY_ID = 17982
   val ids = Seq(SILO_ID, COUPLING_ARRAY_ID)
